@@ -13,3 +13,17 @@ C:\Users\remyp\source\repos\FileVision\FileVision.UI\obj\Debug\FileVision.UI.csp
 C:\Users\remyp\source\repos\FileVision\FileVision.UI\obj\Debug\FileVision.UI.csproj.CoreCompileInputs.cache
 C:\Users\remyp\source\repos\FileVision\FileVision.UI\obj\Debug\FileVision.UI.exe
 C:\Users\remyp\source\repos\FileVision\FileVision.UI\obj\Debug\FileVision.UI.pdb
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\bin\Debug\FileVision.UI.exe.config
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\bin\Debug\FileVision.UI.exe
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\bin\Debug\FileVision.UI.pdb
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\MainWindow.g.cs
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\App.g.cs
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\FileVision.UI_MarkupCompile.cache
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\FileVision.UI_MarkupCompile.lref
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\MainWindow.baml
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\FileVision.UI.g.resources
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\FileVision.UI.Properties.Resources.resources
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\FileVision.UI.csproj.GenerateResource.cache
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\FileVision.UI.csproj.CoreCompileInputs.cache
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\FileVision.UI.exe
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\FileVision.UI.pdb

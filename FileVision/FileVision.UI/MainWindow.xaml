@@ -9,8 +9,6 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -18,48 +16,73 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <!--#region Menu-->
-        <Menu IsMainMenu="True" Name="Menu" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3">
-            <MenuItem Header="Fichier">
-                <MenuItem.Icon>
-                    <Image Source="Images/iconeFichier.ico"/>
-                </MenuItem.Icon>
-                <MenuItem Header="Ouvrir..." Name="MenuItemOuvrirFichier">
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Menu IsMainMenu="True" Name="Menu" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="Transparent" BorderThickness="0">
+                <MenuItem Header="Fichier" Name="MenuItemFichier" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
-                        <Image Source="Images/iconeOuvrir.ico"/>
+                        <Image Source="Images/iconeFichier2.ico"/>
                     </MenuItem.Icon>
+                    <MenuItem Header="Ouvrir..." Name="MenuItemOuvrirFichier">
+                        <MenuItem.Icon>
+                            <Image Source="Images/iconeOuvrir.ico"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Fermer le fichier" Name="MenuItemFermerFichier" IsEnabled="False">
+                        <MenuItem.Icon>
+                            <Image Source="Images/iconeFermer.ico"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Enregistrer" Name="MenuItemEnregistrerFichier" IsEnabled="False">
+                        <MenuItem.Icon>
+                            <Image Source="Images/iconeEnregistrer.ico"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Quitter" Name="MenuItemQuitter">
+                        <MenuItem.Icon>
+                            <Image Source="Images/iconeQuitter.ico"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
-                <Separator />
-                <MenuItem Header="Enregistrer" Name="MenuItemEnregistrerFichier">
-                    <MenuItem.Icon>
-                        <Image Source="Images/iconeEnregistrer.ico"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-                <Separator />
-                <MenuItem Header="Quitter" Name="MenuItemQuitter">
-                    <MenuItem.Icon>
-                        <Image Source="Images/iconeQuitter.ico"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-            </MenuItem>
-        </Menu>
+            </Menu>
+            <StackPanel Grid.Column="1" Grid.Row="0" Background="{Binding ElementName=Menu, Path=Background}" x:Name="spOptionsFichiers" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Collapsed">
+                <Button x:Name="btFermerFichier" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ElementName=Menu, Path=Background}" BorderThickness="0">
+                    <Image Source="Images/iconeFermer.ico" Height="20" ToolTip="Fermer le fichier en cours de lecture" />
+                </Button>
+            </StackPanel>
+        </Grid>
         <!--#endregion-->
         <!--#region Contenu Fichier-->
-        <TextBox x:Name="txtContent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" AcceptsReturn="True" AcceptsTab="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
-        <!--#endregion-->
-        <!--#region Scroll-->
-            
+        <TextBox x:Name="txtContent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" AcceptsReturn="True" AcceptsTab="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"/>
         <!--#endregion-->
         <!--#region Status bar-->
         <DockPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
             <StatusBar DockPanel.Dock="Bottom">
                 <StatusBarItem>
-                    <TextBlock Name="lblCursorPosition" />
+                    <TextBlock Name="txtBkCursorPosition" Text="Position: 0,0"/>
+                </StatusBarItem>
+                <GridSplitter Height="20" Width="5" Background="Gray"/>
+                <StatusBarItem>
+                    <TextBlock Name="txtBkNbMots" Text="Nombre de mots: 0"/>
+                </StatusBarItem>
+                <GridSplitter Height="20" Width="5" Background="Gray"/>
+                <StatusBarItem>
+                    <TextBlock Name="txtBkNbParagrapghes" Text="Nombre de paragraphes: 0"/>
+                </StatusBarItem>
+                <GridSplitter Height="20" Width="5" Background="Gray"/>
+                <StatusBarItem>
+                    <Image Name="imgErreur" Source="Images/iconeFermer.ico" Visibility="Collapsed" Height="20"/>
                 </StatusBarItem>
                 <StatusBarItem>
-                    <TextBlock Name="lblNbMots" />
+                    <Image Name="imgPasErreur" Source="Images/iconePasErreur.ico" Height="20"/>
                 </StatusBarItem>
                 <StatusBarItem>
-                    <TextBlock Name="lblNbParagrapghes" />
+                    <TextBlock Name="txtBkErreur" Text="Aucune erreur"/>
                 </StatusBarItem>
             </StatusBar>
         </DockPanel>

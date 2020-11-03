@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -100,7 +101,13 @@
     <Resource Include="Images\iconeQuitter.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\iconeFichier.ico" />
+    <Resource Include="Images\iconeFermer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\iconeFichier2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\iconePasErreur.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

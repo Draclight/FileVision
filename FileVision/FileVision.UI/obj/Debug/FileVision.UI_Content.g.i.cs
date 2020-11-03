@@ -8,8 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/iconeenregistrer.ico")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/iconeouvrir.ico")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/iconequitter.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/iconepaserreur.ico")]
 
 
