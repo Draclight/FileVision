@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,6 +29,9 @@ namespace FileVision.UI
         private static bool FichierFermeture { get; set; }
         private static string CheminFichierOuvert { get; set; }
         private static string DossierOuverture { get; set; }
+        private static Key keyBas { get; set; }
+        private static Key keyHaut{ get; set; }
+
 
         public MainWindow()
         {
@@ -210,6 +214,13 @@ namespace FileVision.UI
             txtBkNbMots.Text = $"{nbMots} mot(s)";
 
             //Paragraphes
+            RichTextBox richTextBox = new RichTextBox();
+            richTextBox.Selection.Text = txtContent.Text;
+
+            string richText = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd).Text;
+
+            int nbPara = richTextBox.Document.Blocks.Count;
+            txtBkNbParagrapghes.Text = $"{nbPara} paragraphe(s)";
         }
         #endregion
 
@@ -290,5 +301,20 @@ namespace FileVision.UI
             Mouse.OverrideCursor = null;
         }
         #endregion
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl)
+            {
+                keyBas = e.Key;
+            }
+        }
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F)
+            {
+                keyHaut = e.Key;
+            }
+        }
     }
 }
