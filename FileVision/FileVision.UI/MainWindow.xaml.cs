@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,9 +30,6 @@ namespace FileVision.UI
         private static bool FichierFermeture { get; set; }
         private static string CheminFichierOuvert { get; set; }
         private static string DossierOuverture { get; set; }
-        private static Key keyBas { get; set; }
-        private static Key keyHaut{ get; set; }
-
 
         public MainWindow()
         {
@@ -39,15 +37,61 @@ namespace FileVision.UI
 
             Loaded += new RoutedEventHandler(ChargementFenetre);
             Closed += new EventHandler(FermetureApplication);
+            KeyUp += new KeyEventHandler(ToucheLacher);
+            KeyDown += new KeyEventHandler(TouchePresser);
             MenuItemOuvrirFichier.Click += new RoutedEventHandler(OuvrirFichier);
             MenuItemEnregistrerFichier.Click += new RoutedEventHandler(EnregistrerFichier);
             MenuItemQuitter.Click += new RoutedEventHandler(QuitterApplication);
             MenuItemFermerFichier.Click += new RoutedEventHandler(FermerFichier);
             btFermerFichier.Click += new RoutedEventHandler(FermerFichier);
+            btRechercher.Click += new RoutedEventHandler(Rechercher);
             txtContent.SelectionChanged += new RoutedEventHandler(InformationsTexte);
         }
 
         #region Evenements
+        /// <summary>
+        /// Recherche d'un text
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Rechercher(object sender, RoutedEventArgs e)
+        {
+            RechercheTexte();
+        }
+
+        /// <summary>
+        /// Appui sur une touche
+        /// </summary>
+        /// <param name="sender">touche du clavier</param>
+        /// <param name="e">tpuche appuyer</param>
+        private void TouchePresser(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Enter:
+                    txtRecherche.Focus();
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Relache sur une touche
+        /// </summary>
+        /// <param name="sender">touche du clavier</param>
+        /// <param name="e">tpuche appuyer</param>
+        private void ToucheLacher(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Enter:
+                    if (txtRecherche.IsFocused)
+                    {
+                        RechercheTexte();
+                    }
+                    break;
+            }
+        }
+
         /// <summary>
         /// Chergement de la fenêtre
         /// </summary>
@@ -81,18 +125,16 @@ namespace FileVision.UI
         /// <param name="e"></param>
         private void FermetureApplication(object sender, EventArgs e)
         {
+            //sauvegarde du fichier courrant à la fermeture pour réouverture direct
+            Properties.Settings.Default.FichierFermeture = FichierOuvert;
             //Vérification si un fichier est ouvert
             if (FichierOuvert)
             {
-                //sauvegarde du fichier courrant à la fermeture pour réouverture direct
-                Properties.Settings.Default.FichierFermeture = FichierOuvert;
                 Properties.Settings.Default.DernierFichierOuvert = CheminFichierOuvert;
                 Properties.Settings.Default.DossierOuverture = DossierOuverture;
             }
             else
             {
-                //sauvegarde de non fichier à rouvrir à l'ouverture
-                Properties.Settings.Default.FichierFermeture = !FichierOuvert;
                 Properties.Settings.Default.DernierFichierOuvert = string.Empty;
                 Properties.Settings.Default.DossierOuverture = Environment.SystemDirectory;
             }
@@ -194,6 +236,9 @@ namespace FileVision.UI
 
             //Affichage des options fichiers
             OptionsFichier();
+
+            //Informations
+            Log(false, "fichier fermé");
         }
 
         /// <summary>
@@ -203,6 +248,11 @@ namespace FileVision.UI
         /// <param name="e">click</param>
         private void InformationsTexte(object sender, RoutedEventArgs e)
         {
+            if (FichierOuvert)
+                txtContent.IsEnabled = true;
+            else
+                txtContent.IsEnabled = false;
+
             //Cursor position
             int row = txtContent.GetLineIndexFromCharacterIndex(txtContent.CaretIndex);
             int col = txtContent.CaretIndex - txtContent.GetCharacterIndexFromLineIndex(row);
@@ -214,17 +264,35 @@ namespace FileVision.UI
             txtBkNbMots.Text = $"{nbMots} mot(s)";
 
             //Paragraphes
-            RichTextBox richTextBox = new RichTextBox();
-            richTextBox.Selection.Text = txtContent.Text;
+            Regex rx = new Regex(@"\r\n\r\n", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            MatchCollection matches = rx.Matches(txtContent.Text);
 
-            string richText = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd).Text;
-
-            int nbPara = richTextBox.Document.Blocks.Count;
-            txtBkNbParagrapghes.Text = $"{nbPara} paragraphe(s)";
+            txtBkNbParagrapghes.Text = $"{matches.Count + 1} paragraphe(s)";
         }
         #endregion
 
         #region Méthodes
+        /// <summary>
+        /// Recherche de chaine de caractère 
+        /// </summary>
+        private void RechercheTexte()
+        {
+            if (txtContent.Text.ToLower().Contains(txtRecherche.Text.ToLower()))
+            {
+                txtContent.Select(txtContent.Text.ToLower().IndexOf(txtRecherche.Text.ToLower()), txtRecherche.Text.Length);
+                txtContent.Focus();
+            }
+
+            /*Regex rx = new Regex(txtRecherche.Text.ToLower(), RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            MatchCollection matches = rx.Matches(txtContent.Text.ToLower());
+
+            // Report on each match.
+            foreach (Match match in matches)
+            {
+                MatchList.Add(match);
+            }*/
+        }
+
         /// <summary>
         /// Charge le contenu du fichier
         /// </summary>
@@ -269,12 +337,14 @@ namespace FileVision.UI
                 spOptionsFichiers.Visibility = Visibility.Visible;
                 MenuItemEnregistrerFichier.IsEnabled = true;
                 MenuItemFermerFichier.IsEnabled = true;
+                btFermerFichier.Visibility = Visibility.Visible;
             }
             else
             {
                 spOptionsFichiers.Visibility = Visibility.Collapsed;
                 MenuItemEnregistrerFichier.IsEnabled = false;
                 MenuItemFermerFichier.IsEnabled = false;
+                btFermerFichier.Visibility = Visibility.Hidden;
             }
         }
 
@@ -301,20 +371,5 @@ namespace FileVision.UI
             Mouse.OverrideCursor = null;
         }
         #endregion
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl)
-            {
-                keyBas = e.Key;
-            }
-        }
-        private void Window_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.F)
-            {
-                keyHaut = e.Key;
-            }
-        }
     }
 }

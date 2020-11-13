@@ -27,3 +27,4 @@ C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevisio
 C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\FileVision.UI.csproj.CoreCompileInputs.cache
 C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\FileVision.UI.exe
 C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\FileVision.UI.pdb
+C:\Users\remyp\Google Drive\MIAGE\S1\INFO_09 -INTERFACES HOMME MACHINE\filevision\FileVision\FileVision.UI\obj\Debug\FileVision.UI.csprojAssemblyReference.cache

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileVision.UI"
         mc:Ignorable="d"
-        Title="FileVision" Height="450" Width="800" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
+        Title="FileVision" Height="450" Width="800">
     <Window.InputBindings>
         <KeyBinding Command="ApplicationCommands.Find" Gesture="CTRL+F" />
     </Window.InputBindings>
@@ -24,7 +24,7 @@
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-        <!--#region Menu -->
+            <!--#region Menu -->
             <Menu IsMainMenu="True" Name="Menu" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="Transparent" BorderThickness="0">
                 <MenuItem Header="Fichier" Name="MenuItemFichier" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <MenuItem.Icon>
@@ -54,9 +54,12 @@
                     </MenuItem>
                 </MenuItem>
             </Menu>
-            <StackPanel Grid.Column="1" Grid.Row="0" Background="{Binding ElementName=Menu, Path=Background}" x:Name="spOptionsFichiers" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Collapsed">
-                <Button x:Name="btFermerFichier" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ElementName=Menu, Path=Background}" BorderThickness="0">
-                    <Image Source="Images/iconeFermer.ico" Height="20" ToolTip="Fermer le fichier en cours de lecture" />
+            <StackPanel Grid.Column="1" Grid.Row="0" Background="{Binding ElementName=Menu, Path=Background}" x:Name="spOptionsFichiers" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                <Label Content="Recherche: " HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtRecherche" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Button x:Name="btRechercher" Content="Rech." Margin="5"  Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ElementName=Menu, Path=Background}"/>
+                <Button x:Name="btFermerFichier" Margin="5"  Visibility="Hidden" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ElementName=Menu, Path=Background}" BorderThickness="0">
+                    <Image Source="Images/iconeFermer.ico" Height="20" ToolTip="Fermer le fichier en cours de lecture"/>
                 </Button>
             </StackPanel>
         </Grid>
