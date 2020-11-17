@@ -30,6 +30,12 @@ namespace FileVision.UI
         private static bool FichierFermeture { get; set; }
         private static string CheminFichierOuvert { get; set; }
         private static string DossierOuverture { get; set; }
+        private static IList<Match> MatchList { get; set; }
+        private static int compteurRecherche { get; set; }
+        private static Key Key1 { get; set; }
+        private static Key Key2 { get; set; }
+
+        private static string ancienneRecherche { get; set; }
 
         public MainWindow()
         {
@@ -46,6 +52,8 @@ namespace FileVision.UI
             btFermerFichier.Click += new RoutedEventHandler(FermerFichier);
             btRechercher.Click += new RoutedEventHandler(Rechercher);
             txtContent.SelectionChanged += new RoutedEventHandler(InformationsTexte);
+
+            MatchList = new List<Match>();
         }
 
         #region Evenements
@@ -56,7 +64,24 @@ namespace FileVision.UI
         /// <param name="e"></param>
         private void Rechercher(object sender, RoutedEventArgs e)
         {
-            RechercheTexte();
+            if (txtRecherche.Text == ancienneRecherche)
+            {
+                if (compteurRecherche < MatchList.Count)
+                {
+                    FocusOnMatch(MatchList.ElementAt(compteurRecherche));
+                    compteurRecherche++;
+                }
+                else
+                {
+                    Log(false, "Toutes les occurrences de la chaine parcourues");
+                }
+            }
+            else
+            {
+                ancienneRecherche = txtRecherche.Text;
+                RechercheTexte();
+                compteurRecherche++;
+            }
         }
 
         /// <summary>
@@ -69,7 +94,16 @@ namespace FileVision.UI
             switch (e.Key)
             {
                 case Key.Enter:
-                    txtRecherche.Focus();
+
+                    break;
+                case Key.F3:
+                    Rechercher(btRechercher, new RoutedEventArgs());
+                    break;
+                case Key.LeftCtrl:
+                    Key1 = e.Key;
+                    break;
+                case Key.RightCtrl:
+                    Key1 = e.Key;
                     break;
             }
         }
@@ -87,6 +121,12 @@ namespace FileVision.UI
                     if (txtRecherche.IsFocused)
                     {
                         RechercheTexte();
+                    }
+                    break;
+                case Key.F:
+                    if (Key1.Equals(Key.LeftCtrl) | Key1.Equals(Key.RightCtrl))
+                    {
+                        DockPanelRecherche.Visibility = (DockPanelRecherche.Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible;
                     }
                     break;
             }
@@ -267,7 +307,7 @@ namespace FileVision.UI
             Regex rx = new Regex(@"\r\n\r\n", RegexOptions.Compiled | RegexOptions.IgnoreCase);
             MatchCollection matches = rx.Matches(txtContent.Text);
 
-            txtBkNbParagrapghes.Text = $"{matches.Count + 1} paragraphe(s)";
+            txtBkNbParagrapghes.Text = $"{matches.Count} paragraphe(s)";
         }
         #endregion
 
@@ -279,18 +319,23 @@ namespace FileVision.UI
         {
             if (txtContent.Text.ToLower().Contains(txtRecherche.Text.ToLower()))
             {
-                txtContent.Select(txtContent.Text.ToLower().IndexOf(txtRecherche.Text.ToLower()), txtRecherche.Text.Length);
-                txtContent.Focus();
+                MatchList.Clear();
+                compteurRecherche = 0;
+
+                Regex rx = new Regex(txtRecherche.Text.ToLower(), RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                MatchCollection matches = rx.Matches(txtContent.Text.ToLower());
+
+                // Report on each match.
+                foreach (Match match in matches)
+                {
+                    MatchList.Add(match);
+                }
+                FocusOnMatch(MatchList.First());
             }
-
-            /*Regex rx = new Regex(txtRecherche.Text.ToLower(), RegexOptions.Compiled | RegexOptions.IgnoreCase);
-            MatchCollection matches = rx.Matches(txtContent.Text.ToLower());
-
-            // Report on each match.
-            foreach (Match match in matches)
+            else
             {
-                MatchList.Add(match);
-            }*/
+                Log(true, "chaine introuvable.");
+            }
         }
 
         /// <summary>
@@ -338,6 +383,7 @@ namespace FileVision.UI
                 MenuItemEnregistrerFichier.IsEnabled = true;
                 MenuItemFermerFichier.IsEnabled = true;
                 btFermerFichier.Visibility = Visibility.Visible;
+                DockPanelRecherche.Visibility = Visibility.Visible;
             }
             else
             {
@@ -345,7 +391,19 @@ namespace FileVision.UI
                 MenuItemEnregistrerFichier.IsEnabled = false;
                 MenuItemFermerFichier.IsEnabled = false;
                 btFermerFichier.Visibility = Visibility.Hidden;
+                DockPanelRecherche.Visibility = Visibility.Collapsed;
             }
+        }
+
+        /// <summary>
+        /// Sélectionne la chaine de caractère a la position données
+        /// </summary>
+        /// <param name="match"></param>
+        private void FocusOnMatch(Match match)
+        {
+            txtContent.Select(match.Index, txtRecherche.Text.Length);
+            txtContent.Focus();
+            txtContent.SelectionBrush = Brushes.Gold;
         }
 
         /// <summary>

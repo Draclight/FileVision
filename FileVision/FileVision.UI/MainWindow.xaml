@@ -6,14 +6,12 @@
         xmlns:local="clr-namespace:FileVision.UI"
         mc:Ignorable="d"
         Title="FileVision" Height="450" Width="800">
-    <Window.InputBindings>
-        <KeyBinding Command="ApplicationCommands.Find" Gesture="CTRL+F" />
-    </Window.InputBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="1*" />
             <RowDefinition Height="auto" />
@@ -53,21 +51,25 @@
                     </MenuItem>
                 </MenuItem>
             </Menu>
-            <StackPanel Grid.Column="1" Grid.Row="0" Background="{Binding ElementName=Menu, Path=Background}" x:Name="spOptionsFichiers" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
-                <Label Content="Recherche: " HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBox x:Name="txtRecherche" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="texte à rechercher..." />
-                <Button x:Name="btRechercher" Content="Rech." Margin="5"  Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ElementName=Menu, Path=Background}"/>
-                <Button x:Name="btFermerFichier" Margin="5"  Visibility="Hidden" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ElementName=Menu, Path=Background}" BorderThickness="0">
-                    <Image Source="Images/iconeFermer.ico" Height="20" ToolTip="Fermer le fichier en cours de lecture"/>
-                </Button>
-            </StackPanel>
+            <Button x:Name="btFermerFichier" Margin="5" Grid.Column="1" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Right" Background="{Binding ElementName=Menu, Path=Background}" BorderThickness="0">
+                <Image Source="Images/iconeFermer.ico" Height="20" ToolTip="Fermer le fichier en cours de lecture"/>
+            </Button>
         </Grid>
         <!--#endregion-->
+        <DockPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Name="DockPanelRecherche" Visibility="Collapsed" Background="{Binding ElementName=Menu, Path=Background}">
+            <StackPanel Grid.Column="1" Grid.Row="0" x:Name="spOptionsFichiers" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="Visible">
+                <Label Content="Recherche: " HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtRecherche" Text=""  Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="texte à rechercher..." />
+                <Button x:Name="btRechercher" Margin="5"  Visibility="Visible" ToolTip="Lance la rechercher / F3 pour passer au suivant" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ElementName=Menu, Path=Background}">
+                    <Image Source="Images/iconeRechercher.ico" Width="25" Height="{Binding ElementName=txtRecherche, Path=Height}"/>
+                </Button>
+            </StackPanel>
+        </DockPanel>
         <!--#region Contenu Fichier-->
-        <TextBox x:Name="txtContent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" AcceptsReturn="True" AcceptsTab="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"/>
+        <TextBox x:Name="txtContent" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AcceptsReturn="True" AcceptsTab="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"/>
         <!--#endregion-->
         <!--#region Status bar-->
-        <DockPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
+        <DockPanel Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
             <StatusBar DockPanel.Dock="Bottom">
                 <StatusBarItem>
                     <TextBlock Name="txtBkCursorPosition" Text="Position: 0,0"/>
