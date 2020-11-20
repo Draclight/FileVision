@@ -44,6 +44,12 @@
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator />
+                    <MenuItem Header="Aide" Name="MenuItemAide">
+                        <MenuItem.Icon>
+                            <Image Source="Images/iconeAide.ico"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
                     <MenuItem Header="Quitter" Name="MenuItemQuitter">
                         <MenuItem.Icon>
                             <Image Source="Images/iconeQuitter.ico"/>

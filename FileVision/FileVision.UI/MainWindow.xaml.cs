@@ -49,6 +49,7 @@ namespace FileVision.UI
             MenuItemEnregistrerFichier.Click += new RoutedEventHandler(EnregistrerFichier);
             MenuItemQuitter.Click += new RoutedEventHandler(QuitterApplication);
             MenuItemFermerFichier.Click += new RoutedEventHandler(FermerFichier);
+            MenuItemAide.Click += new RoutedEventHandler(OuvrirAide);
             btFermerFichier.Click += new RoutedEventHandler(FermerFichier);
             btRechercher.Click += new RoutedEventHandler(Rechercher);
             txtContent.SelectionChanged += new RoutedEventHandler(InformationsTexte);
@@ -57,6 +58,12 @@ namespace FileVision.UI
         }
 
         #region Evenements
+        private void OuvrirAide(object sender, RoutedEventArgs e)
+        {
+            WindowHelp window = new WindowHelp();
+            window.Show();
+        }
+
         /// <summary>
         /// Recherche d'un text
         /// </summary>
@@ -109,7 +116,7 @@ namespace FileVision.UI
         }
 
         /// <summary>
-        /// Relache sur une touche
+        /// Relache une touche
         /// </summary>
         /// <param name="sender">touche du clavier</param>
         /// <param name="e">tpuche appuyer</param>
@@ -128,6 +135,9 @@ namespace FileVision.UI
                     {
                         DockPanelRecherche.Visibility = (DockPanelRecherche.Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible;
                     }
+                    break;
+                case Key.F1:
+                    OuvrirAide(MenuItemAide, new RoutedEventArgs());
                     break;
             }
         }
@@ -307,7 +317,7 @@ namespace FileVision.UI
             Regex rx = new Regex(@"\r\n\r\n", RegexOptions.Compiled | RegexOptions.IgnoreCase);
             MatchCollection matches = rx.Matches(txtContent.Text);
 
-            txtBkNbParagrapghes.Text = $"{matches.Count} paragraphe(s)";
+            txtBkNbParagrapghes.Text = $"{matches.Count + 1} paragraphe(s)";
         }
         #endregion
 
