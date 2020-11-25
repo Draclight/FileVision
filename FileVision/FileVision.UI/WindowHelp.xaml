@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileVision.UI"
         mc:Ignorable="d"
-        Title="WindowHelp" Height="300" Width="400">
+        Title="Aides" Height="300" Width="600" Background="#FFF0F0F0">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <!--#region ListeBox -->
+        <ListBox x:Name="listBoxOptions" Grid.Column="0" Background="#FFF0F0F0" BorderBrush="Black" BorderThickness="1">
+            <ListBoxItem x:Name="aideDescription">
+                Description application
+            </ListBoxItem>
+            <ListBoxItem x:Name="aideOuvertureFichier">
+                Ouvrir un fichier
+            </ListBoxItem>
+            <ListBoxItem x:Name="aideFermetureFichier">
+                Fermer un fichier
+            </ListBoxItem>
+            <ListBoxItem x:Name="aideRecherche">
+                Recherche de contenu
+            </ListBoxItem>
+            <ListBoxItem x:Name="aideEnregistrer">
+                Enregistrer le contenu
+            </ListBoxItem>
+        </ListBox>
+        <!--#endregion-->
+        <!--#region Content -->
+        <TextBlock Name="txtContent" Grid.Column="1" Margin="5" ScrollViewer.CanContentScroll="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <!--#endregion-->
     </Grid>
 </Window>

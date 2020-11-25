@@ -8,6 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/iconeaide.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("aides/aidedescription.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("aides/aidefermeturefichier.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("aides/aideouverturefichier.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("aides/aiderecherche.txt")]
 
 

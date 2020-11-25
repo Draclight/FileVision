@@ -1,0 +1,6 @@
+Enregistrer le fichier:
+	Pour enregistrer les modifications dans le fichier, allez dans "Fichier" en haut à gauche de l'application,
+	Puis sélectionner "Enregistrer".
+	Ou faire ctrl + S
+
+	Si le fichier est fermer, les modifications ne seront pas enregistré.

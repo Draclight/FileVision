@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FileVision.UI.Properties
-{
-
-
+namespace FileVision.UI.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
     /// </summary>
@@ -19,52 +19,114 @@ namespace FileVision.UI.Properties
     // à l'aide d'un outil, tel que ResGen ou Visual Studio.
     // Pour ajouter ou supprimer un membre, modifiez votre fichier .ResX, puis réexécutez ResGen
     // avec l'option /str ou régénérez votre projet VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FileVision.UI.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Remplace la propriété CurrentUICulture du thread actuel pour toutes
         ///   les recherches de ressources à l'aide de cette classe de ressource fortement typée.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Cette application traite les fichiers textes permet les fonctionnalités suivantes:
+        ///⁃ ouverture et fermeture de fichier
+        ///⁃ affichage et parcours du contenu du fichier
+        ///⁃ affichage du nombre de mots et de paragraphes
+        ///⁃ recherche d’une chaîne de caractères
+        ///⁃ modification du contenu du fichier.
+        /// </summary>
+        internal static string aideDescription {
+            get {
+                return ResourceManager.GetString("aideDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Enregistrer le fichier:
+        ///	Pour enregistrer les modifications dans le fichier, allez dans &quot;Fichier&quot; en haut à gauche de l&apos;application,
+        ///	Puis sélectionner &quot;Enregistrer&quot;.
+        ///	Ou faire ctrl + S
+        ///
+        ///	Si le fichier est fermer, les modifications ne seront pas enregistré..
+        /// </summary>
+        internal static string aideEnregistrer {
+            get {
+                return ResourceManager.GetString("aideEnregistrer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Fermeture d&apos;un fichier:
+        ///	Pour fermer le fichier cliquer sur le bouton rouge avec la croix blanche.
+        ///	Aller dans Fichier en haut à gauche de l&apos;application et sélectionner &quot;Fermer le fichier&quot;.
+        ///
+        ///Fermeture de l&apos;application:
+        ///	- Alt + F4 ou fermer l&apos;application avec la croix dans le coin supérieur droit de la fenêtre pour fermer l&apos;application.
+        ///	- Si un fichier est ouvert lors de la fermeture de l&apos;application celui-ci sera réouvert à la prochaine ouverture de l&apos;application..
+        /// </summary>
+        internal static string aideFermetureFichier {
+            get {
+                return ResourceManager.GetString("aideFermetureFichier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ouverture d&apos;un fichier
+        ///	Pour Ouvrir un fichier aller dans &quot;Fichier&quot; en haut à gauche et sélectionné &quot;Ouvrir&quot;.
+        /// </summary>
+        internal static string aideOuvertureFichier {
+            get {
+                return ResourceManager.GetString("aideOuvertureFichier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Recher d&apos;un chaine de caractère:
+        ///	- Si un fichier est ouvert alors la recherche est disponible.
+        ///	- Saisir la recherche dans la zone de saisie prévu.
+        ///	- Appuyer sur la touche &quot;Entrer&quot; ou cliqué sur la flèche.
+        ///	- Pour parcourir toutes les occurences trouvées faire F3.
+        ///
+        ///Cacher la recherche:
+        ///	- Ferme le fichier.
+        ///	- Faire ctrl + F..
+        /// </summary>
+        internal static string aideRecherche {
+            get {
+                return ResourceManager.GetString("aideRecherche", resourceCulture);
             }
         }
     }

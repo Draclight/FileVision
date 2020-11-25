@@ -53,11 +53,27 @@ namespace FileVision.UI
             btFermerFichier.Click += new RoutedEventHandler(FermerFichier);
             btRechercher.Click += new RoutedEventHandler(Rechercher);
             txtContent.SelectionChanged += new RoutedEventHandler(InformationsTexte);
+            txtContent.TextChanged += new TextChangedEventHandler(ModificationsTexte);
 
             MatchList = new List<Match>();
         }
 
         #region Evenements
+        /// <summary>
+        /// Modification du texte
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ModificationsTexte(object sender, TextChangedEventArgs e)
+        {
+            Log(false, "édition en cours");
+        }
+
+        /// <summary>
+        /// Ouvre l'aide
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OuvrirAide(object sender, RoutedEventArgs e)
         {
             WindowHelp window = new WindowHelp();
@@ -134,6 +150,15 @@ namespace FileVision.UI
                     if (Key1.Equals(Key.LeftCtrl) | Key1.Equals(Key.RightCtrl))
                     {
                         DockPanelRecherche.Visibility = (DockPanelRecherche.Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible;
+                    }
+                    break;
+                case Key.S:
+                    if (Key1.Equals(Key.LeftCtrl) | Key1.Equals(Key.RightCtrl))
+                    {
+                        if (FichierOuvert)
+                        {
+                            EnregistrementFichier();
+                        }
                     }
                     break;
                 case Key.F1:
@@ -242,23 +267,7 @@ namespace FileVision.UI
         /// <param name="e">click</param>
         private void EnregistrerFichier(object sender, RoutedEventArgs e)
         {
-            //Vérification d'un fichier ouvert
-            if (FichierOuvert)
-            {
-                try
-                {
-                    //Pass the filepath and filename to the StreamWriter Constructor
-                    StreamWriter sw = new StreamWriter(CheminFichierOuvert);
-                    //Write a second line of text
-                    sw.Write(txtContent.Text);
-                    //Close the file
-                    sw.Close();
-                }
-                catch (Exception ex)
-                {
-                    Log(true, ex.Message);
-                }
-            }
+            EnregistrementFichier();
         }
 
         /// <summary>
@@ -437,6 +446,31 @@ namespace FileVision.UI
             }
 
             Mouse.OverrideCursor = null;
+        }
+
+        /// <summary>
+        /// Enregistrement du fichier
+        /// </summary>
+        private void EnregistrementFichier()
+        {
+            //Vérification d'un fichier ouvert
+            if (FichierOuvert)
+            {
+                try
+                {
+                    //Pass the filepath and filename to the StreamWriter Constructor
+                    StreamWriter sw = new StreamWriter(CheminFichierOuvert);
+                    //Write a second line of text
+                    sw.Write(txtContent.Text);
+                    //Close the file
+                    sw.Close();
+                    Log(false, $"Fichier enregistré.");
+                }
+                catch (Exception ex)
+                {
+                    Log(true, ex.Message);
+                }
+            }
         }
         #endregion
     }

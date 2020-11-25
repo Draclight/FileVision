@@ -1,0 +1,6 @@
+Cette application traite les fichiers textes permet les fonctionnalités suivantes:
+⁃ ouverture et fermeture de fichier
+⁃ affichage et parcours du contenu du fichier
+⁃ affichage du nombre de mots et de paragraphes
+⁃ recherche d’une chaîne de caractères
+⁃ modification du contenu du fichier

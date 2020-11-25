@@ -1,0 +1,9 @@
+Recher d'un chaine de caractère:
+	- Si un fichier est ouvert alors la recherche est disponible.
+	- Saisir la recherche dans la zone de saisie prévu.
+	- Appuyer sur la touche "Entrer" ou cliqué sur la flèche.
+	- Pour parcourir toutes les occurences trouvées faire F3.
+
+Cacher la recherche:
+	- Ferme le fichier.
+	- Faire ctrl + F.
