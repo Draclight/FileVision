@@ -92,7 +92,8 @@ namespace FileVision.UI.Properties {
         ///   Recherche une chaîne localisée semblable à Fermeture d&apos;un fichier:
         ///	Pour fermer le fichier cliquer sur le bouton rouge avec la croix blanche.
         ///	Aller dans Fichier en haut à gauche de l&apos;application et sélectionner &quot;Fermer le fichier&quot;.
-        ///
+        ///	Ou faire ctrl + W
+        ///	
         ///Fermeture de l&apos;application:
         ///	- Alt + F4 ou fermer l&apos;application avec la croix dans le coin supérieur droit de la fenêtre pour fermer l&apos;application.
         ///	- Si un fichier est ouvert lors de la fermeture de l&apos;application celui-ci sera réouvert à la prochaine ouverture de l&apos;application..
@@ -105,7 +106,8 @@ namespace FileVision.UI.Properties {
         
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Ouverture d&apos;un fichier
-        ///	Pour Ouvrir un fichier aller dans &quot;Fichier&quot; en haut à gauche et sélectionné &quot;Ouvrir&quot;.
+        ///	Pour Ouvrir un fichier aller dans &quot;Fichier&quot; en haut à gauche et sélectionné &quot;Ouvrir&quot;
+        ///	Ou faire ctrl+O.
         /// </summary>
         internal static string aideOuvertureFichier {
             get {

@@ -173,14 +173,5 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Aides\aideDescription.txt" />
-    <Resource Include="Aides\aideFermetureFichier.txt" />
-    <Resource Include="Aides\aideOuvertureFichier.txt" />
-    <Resource Include="Aides\aideRecherche.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Aides\aideEnregistrer.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

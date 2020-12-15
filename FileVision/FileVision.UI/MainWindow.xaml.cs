@@ -152,6 +152,12 @@ namespace FileVision.UI
                         DockPanelRecherche.Visibility = (DockPanelRecherche.Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible;
                     }
                     break;
+                case Key.O:
+                    if (Key1.Equals(Key.LeftCtrl) | Key1.Equals(Key.RightCtrl))
+                    {
+                        OuvrirFichier(MenuItemOuvrirFichier, new RoutedEventArgs());
+                    }
+                    break;
                 case Key.S:
                     if (Key1.Equals(Key.LeftCtrl) | Key1.Equals(Key.RightCtrl))
                     {
@@ -159,6 +165,12 @@ namespace FileVision.UI
                         {
                             EnregistrementFichier();
                         }
+                    }
+                    break;
+                case Key.W:
+                    if (Key1.Equals(Key.LeftCtrl) | Key1.Equals(Key.RightCtrl))
+                    {
+                        FermerFichier(MenuItemFermerFichier, new RoutedEventArgs());
                     }
                     break;
                 case Key.F1:

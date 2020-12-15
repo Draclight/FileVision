@@ -27,30 +27,30 @@
                     <MenuItem.Icon>
                         <Image Source="Images/iconeFichier2.ico"/>
                     </MenuItem.Icon>
-                    <MenuItem Header="Ouvrir..." Name="MenuItemOuvrirFichier">
+                    <MenuItem Header="Ouvrir...                     ctrl+O"  Name="MenuItemOuvrirFichier">
                         <MenuItem.Icon>
                             <Image Source="Images/iconeOuvrir.ico"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Fermer le fichier" Name="MenuItemFermerFichier" IsEnabled="False">
+                    <MenuItem Header="Fermer le fichier       ctrl+W" Name="MenuItemFermerFichier" IsEnabled="False">
                         <MenuItem.Icon>
                             <Image Source="Images/iconeFermer.ico"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator />
-                    <MenuItem Header="Enregistrer" Name="MenuItemEnregistrerFichier" IsEnabled="False">
+                    <MenuItem Header="Enregistrer                ctrl+S" Name="MenuItemEnregistrerFichier" IsEnabled="False">
                         <MenuItem.Icon>
                             <Image Source="Images/iconeEnregistrer.ico"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator />
-                    <MenuItem Header="Aide" Name="MenuItemAide">
+                    <MenuItem Header="Aide                          F1" Name="MenuItemAide">
                         <MenuItem.Icon>
                             <Image Source="Images/iconeAide.ico"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     <Separator />
-                    <MenuItem Header="Quitter" Name="MenuItemQuitter">
+                    <MenuItem Header="Quitter                     alt+F4" Name="MenuItemQuitter">
                         <MenuItem.Icon>
                             <Image Source="Images/iconeQuitter.ico"/>
                         </MenuItem.Icon>

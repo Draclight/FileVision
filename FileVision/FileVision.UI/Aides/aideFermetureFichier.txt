@@ -1,7 +1,0 @@
-Fermeture d'un fichier:
-	Pour fermer le fichier cliquer sur le bouton rouge avec la croix blanche.
-	Aller dans Fichier en haut à gauche de l'application et sélectionner "Fermer le fichier".
-
-Fermeture de l'application:
-	- Alt + F4 ou fermer l'application avec la croix dans le coin supérieur droit de la fenêtre pour fermer l'application.
-	- Si un fichier est ouvert lors de la fermeture de l'application celui-ci sera réouvert à la prochaine ouverture de l'application.
